@@ -13,7 +13,9 @@ const main = async () => {
 			data = res.data;
 		})
 		.catch(err => {
+			console.log("Something happened when requesting data");
 			console.log("Error: ", err.message);
+			process.exit();
 		});
 
 	for (let i = 0; i < data.length; i++) {
