@@ -1,6 +1,6 @@
 const prettify = values => {
 	values.forEach(element => {
-		console.log("\t- " + element);
+		console.log("\t\u2022 " + element);
 	});
 };
 
