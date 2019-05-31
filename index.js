@@ -1,10 +1,7 @@
 const { Person } = require("./src/model/Person");
 const { prettify } = require("./src/util/helper");
 const { getData } = require("./src/api");
-
-const genderExists = (arr, data, index) => {
-	return arr.some(g => g.getGender() === data[index].gender);
-};
+const { genderExists } = require("./src/util/helper");
 
 const main = async () => {
 	let data;
@@ -51,3 +48,7 @@ const main = async () => {
 };
 
 main();
+
+module.exports = {
+	genderExists
+};

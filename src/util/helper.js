@@ -4,6 +4,11 @@ const prettify = values => {
 	});
 };
 
+const genderExists = (arr, data, index) => {
+	return arr.some(g => g.getGender() === data[index].gender);
+};
+
 module.exports = {
-	prettify
+	prettify,
+	genderExists
 };
