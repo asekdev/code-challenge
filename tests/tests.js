@@ -1,6 +1,5 @@
 const chai = require("chai");
 const expect = chai.expect;
-const { genderExists } = require("../src/util/helper");
 const { Person } = require("../src/model/Person");
 const { mockJSON } = require("../src/util/mock");
 
@@ -11,14 +10,13 @@ describe("Data Filtering", () => {
 	before(() => {
 		for (let i = 0; i < mockData.length; i++) {
 			let currentGenderObject;
+			let genderExists = mockOwnersArray.some(g => g.getGender() === mockData[i].gender);
 
-			if (!genderExists(mockOwnersArray, mockData, i)) {
+			if (!genderExists) {
 				mockOwnersArray.push(new Person(mockData[i].gender));
 			}
 
-			currentGenderObject = mockOwnersArray.find(
-				g => g["gender"] === mockData[i].gender
-			);
+			currentGenderObject = mockOwnersArray.find(g => g["gender"] === mockData[i].gender);
 
 			if (mockData[i].pets) {
 				mockData[i].pets.forEach(pet => {

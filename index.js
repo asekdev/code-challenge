@@ -1,10 +1,10 @@
 const { Person } = require("./src/model/Person");
 const { prettify } = require("./src/util/helper");
 const { getData } = require("./src/api");
-const { genderExists } = require("./src/util/helper");
 
 const main = async () => {
 	let data;
+	let genderExists;
 	let owners = [];
 
 	//Get data
@@ -21,7 +21,9 @@ const main = async () => {
 	for (let i = 0; i < data.length; i++) {
 		let currentGenderObject;
 
-		if (!genderExists(owners, data, i)) {
+		genderExists = owners.some(g => g.getGender() === data[i].gender);
+
+		if (!genderExists) {
 			owners.push(new Person(data[i].gender));
 		}
 
@@ -50,7 +52,3 @@ const main = async () => {
 };
 
 main();
-
-module.exports = {
-	genderExists
-};
